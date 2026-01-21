@@ -1,0 +1,135 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f2f6fc;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.card {
+  background-color: #ffffff;
+  width: 340px;
+  padding: 28px;
+
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.card h1 {
+  margin: 0 0 18px;
+  text-align: center;
+  font-size: 22px;
+  color: #111;
+}
+
+label {
+  display: block;
+  font-size: 13px;
+  color: #333;
+  margin: 10px 0 6px;
+}
+
+input {
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 14px;
+
+  border: 1px solid #cfd8e3;
+  border-radius: 8px;
+  outline: none;
+}
+
+input:focus {
+  border-color: #2563eb;
+}
+
+button {
+  width: 100%;
+  padding: 10px 12px;
+  margin-top: 14px;
+
+  background-color: #2563eb;
+  color: white;
+
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #1e4fd8;
+}
+
+.message {
+  margin-top: 14px;
+  text-align: center;
+  font-weight: bold;
+  min-height: 18px;
+}
+
+.error {
+  color: #dc2626;
+}
+
+.success {
+  color: #16a34a;
+}
+
+.link {
+  display: block;
+  margin-top: 16px;
+  text-align: center;
+  font-size: 14px;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.card {
+  animation: fadeInUp 0.4s ease;
+}
+
+.message {
+  transition: all 0.3s ease;
+}
+
+.hidden {
+  display: none;
+}
+
+.link-btn {
+  margin-top: 15px;
+  background: none;
+  color: #2563eb;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.screen {
+  animation: fadeSlide 0.35s ease;
+}
+
+@keyframes fadeSlide {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
