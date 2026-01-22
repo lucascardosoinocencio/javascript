@@ -10,11 +10,19 @@
     <div class="card screen" id="home">
       <h1>Authentication</h1>
 
+      <p id="homeUser" style="text-align: center; margin: 10px 0 20px"></p>
+
       <p style="text-align: center; margin-bottom: 20px">Choose an option</p>
 
       <button onclick="showLogin()">Login</button>
       <button onclick="showRegister()" style="margin-top: 10px">
         Register
+      </button>
+      <button id="logoutBtn" style="margin-top: 10px" class="hidden">
+        Logout
+      </button>
+      <button id="deleteBtn" class="hidden" style="margin-top: 10px">
+        Delete account
       </button>
     </div>
 
@@ -44,6 +52,16 @@
 
       <label>Age</label>
       <input id="age" placeholder="Your age" />
+
+      <label>Email</label>
+      <input id="registerEmail" placeholder="you@example.com" />
+
+      <label>Password</label>
+      <input
+        id="registerPassword"
+        type="password"
+        placeholder="Min 6 characters"
+      />
 
       <button id="registerBtn">Register</button>
 
