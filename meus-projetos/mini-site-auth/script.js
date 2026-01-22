@@ -46,16 +46,22 @@ function showHome() {
   const homeUser = document.getElementById("homeUser");
   const logoutBtn = document.getElementById("logoutBtn");
   const deleteBtn = document.getElementById("deleteBtn");
+  const showDataBtn = document.getElementById("showDataBtn");
 
   // Se tiver usuário logado, mostra welcome e botões; se não, esconde
   if (loggedUser) {
     homeUser.innerText = `Welcome, ${loggedUser.name}!`;
     logoutBtn.classList.remove("hidden");
     deleteBtn.classList.remove("hidden");
+    showDataBtn.classList.remove("hidden");
   } else {
     homeUser.innerText = "";
     logoutBtn.classList.add("hidden");
     deleteBtn.classList.add("hidden");
+    showDataBtn.classList.add("hidden");
+    const box = document.getElementById("userDataBox");
+    box.innerHTML = "";
+    box.classList.add("hidden");
   }
 }
 
@@ -228,6 +234,24 @@ document.getElementById("deleteBtn").addEventListener("click", () => {
 
   // Volta pra Home (vai ficar deslogado)
   showHome();
+});
+
+document.getElementById("showDataBtn").addEventListener("click", () => {
+  const loggedUserJSON = localStorage.getItem("loggedUser");
+  const loggedUser = loggedUserJSON ? JSON.parse(loggedUserJSON) : null;
+
+  if (!loggedUser) return;
+
+  const box = document.getElementById("userDataBox");
+
+  box.innerHTML = `
+  <div><b>Name:</b> ${loggedUser.name}</div>
+  <div><b>Age:</b> ${loggedUser.age}</div>
+  <div><b>Email:</b> ${loggedUser.email}</div>
+`;
+
+  box.classList.remove("hidden");
+  box.className = "message success";
 });
 
 // ===== LOGOUT (remove sessão e volta pra home) =====
