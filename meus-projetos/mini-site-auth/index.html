@@ -14,14 +14,19 @@
 
       <p style="text-align: center; margin-bottom: 20px">Choose an option</p>
 
-      <button onclick="showLogin()">Login</button>
-      <button onclick="showRegister()" style="margin-top: 10px">
+      <button id="loginHomeBtn" onclick="showLogin()">Login</button>
+      <button
+        id="registerHomeBtn"
+        onclick="showRegister()"
+        style="margin-top: 10px"
+      >
         Register
       </button>
+
       <button id="logoutBtn" style="margin-top: 10px" class="hidden">
         Logout
       </button>
-      <button id="deleteBtn" class="hidden" style="margin-top: 10px">
+      <button id="deleteBtn" class="hidden danger" style="margin-top: 10px">
         Delete account
       </button>
       <button id="showDataBtn" class="hidden" style="margin-top: 10px">

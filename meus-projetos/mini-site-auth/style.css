@@ -1,75 +1,166 @@
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background-color: #f2f6fc;
+/* =========================
+   Base
+========================= */
+:root {
+  --bg-1: #eef4ff;
+  --bg-2: #f7f9fc;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+  --text: #0f172a;
+  --muted: #475569;
+
+  --primary-1: #2f6cff;
+  --primary-2: #1f55e6;
+
+  --danger-1: #ef4444;
+  --danger-2: #dc2626;
+
+  --border: rgba(15, 23, 42, 0.10);
+  --shadow-1: rgba(15, 23, 42, 0.10);
+  --shadow-2: rgba(15, 23, 42, 0.06);
+
+  --radius: 16px;
 }
 
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color: var(--text);
+
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+
+  background: radial-gradient(circle at top, var(--bg-1) 0%, var(--bg-2) 45%, #fff 100%);
+  padding: 24px;
+}
+
+/* =========================
+   Card
+========================= */
 .card {
-  background-color: #ffffff;
-  width: 340px;
+  width: 390px;
   padding: 28px;
 
-  border-radius: 12px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(30, 64, 175, 0.10);
+
+  box-shadow:
+    0 18px 60px var(--shadow-1),
+    0 2px 10px var(--shadow-2);
+
+  backdrop-filter: blur(6px);
+  animation: fadeSlide 0.35s ease;
 }
 
 .card h1 {
-  margin: 0 0 18px;
+  margin: 0 0 14px;
   text-align: center;
   font-size: 22px;
-  color: #111;
+  letter-spacing: 0.2px;
 }
 
+p {
+  margin: 0;
+  color: var(--muted);
+}
+
+/* =========================
+   Form
+========================= */
 label {
   display: block;
   font-size: 13px;
-  color: #333;
-  margin: 10px 0 6px;
+  color: #334155;
+  margin: 12px 0 6px;
 }
 
 input {
   width: 100%;
-  padding: 10px 12px;
+  padding: 11px 12px;
   font-size: 14px;
 
-  border: 1px solid #cfd8e3;
-  border-radius: 8px;
+  border: 1px solid rgba(148, 163, 184, 0.55);
+  border-radius: 12px;
   outline: none;
+
+  background: #fff;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
 }
 
 input:focus {
-  border-color: #2563eb;
+  border-color: rgba(37, 99, 235, 0.55);
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12);
 }
 
+/* =========================
+   Buttons
+========================= */
 button {
   width: 100%;
-  padding: 10px 12px;
-  margin-top: 14px;
+  padding: 12px 14px;
+  margin-top: 12px;
 
-  background-color: #2563eb;
+  border: 1px solid rgba(37, 99, 235, 0.25);
+  border-radius: 12px;
+
+  font-size: 15px;
+  font-weight: 700;
+
+  background: linear-gradient(180deg, var(--primary-1) 0%, var(--primary-2) 100%);
   color: white;
 
-  border: none;
-  border-radius: 8px;
-  font-size: 15px;
-
   cursor: pointer;
+  transition: transform 0.06s ease, filter 0.2s ease, box-shadow 0.2s ease;
 }
 
 button:hover {
-  background-color: #1e4fd8;
+  filter: brightness(1.03);
+  box-shadow: 0 10px 22px rgba(37, 99, 235, 0.20);
 }
 
+button:active {
+  transform: translateY(1px);
+}
+
+/* Botão "danger" (Delete) — você só precisa colocar class="danger" nele */
+button.danger {
+  background: linear-gradient(180deg, var(--danger-1) 0%, var(--danger-2) 100%);
+  border-color: rgba(220, 38, 38, 0.35);
+}
+
+button.danger:hover {
+  box-shadow: 0 10px 22px rgba(220, 38, 38, 0.18);
+}
+
+/* Botões "secundários" (link-btn) */
+.link-btn {
+  margin-top: 14px;
+  background: transparent;
+  border: none;
+  color: #2563eb;
+  font-weight: 600;
+  padding: 10px 0;
+}
+
+.link-btn:hover {
+  text-decoration: underline;
+  box-shadow: none;
+}
+
+/* =========================
+   Messages
+========================= */
 .message {
   margin-top: 14px;
   text-align: center;
-  font-weight: bold;
+  font-weight: 800;
   min-height: 18px;
+  transition: all 0.25s ease;
 }
 
 .error {
@@ -80,43 +171,23 @@ button:hover {
   color: #16a34a;
 }
 
-.link {
-  display: block;
-  margin-top: 16px;
-  text-align: center;
-  font-size: 14px;
+/* Caixa de dados (Show my data) ficar mais “bonita” */
+#userDataBox {
+  margin-top: 14px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: rgba(22, 163, 74, 0.08);
+  border: 1px solid rgba(22, 163, 74, 0.18);
+  text-align: left;
+  font-weight: 700;
+  line-height: 1.5;
 }
 
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(15px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.card {
-  animation: fadeInUp 0.4s ease;
-}
-
-.message {
-  transition: all 0.3s ease;
-}
-
+/* =========================
+   Utils + Animations
+========================= */
 .hidden {
   display: none;
-}
-
-.link-btn {
-  margin-top: 15px;
-  background: none;
-  color: #2563eb;
-  border: none;
-  cursor: pointer;
-  font-size: 14px;
 }
 
 .screen {

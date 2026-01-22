@@ -47,6 +47,8 @@ function showHome() {
   const logoutBtn = document.getElementById("logoutBtn");
   const deleteBtn = document.getElementById("deleteBtn");
   const showDataBtn = document.getElementById("showDataBtn");
+  const loginHomeBtn = document.getElementById("loginHomeBtn");
+  const registerHomeBtn = document.getElementById("registerHomeBtn");
 
   // Se tiver usuário logado, mostra welcome e botões; se não, esconde
   if (loggedUser) {
@@ -54,6 +56,8 @@ function showHome() {
     logoutBtn.classList.remove("hidden");
     deleteBtn.classList.remove("hidden");
     showDataBtn.classList.remove("hidden");
+    loginHomeBtn.classList.add("hidden");
+    registerHomeBtn.classList.add("hidden");
   } else {
     homeUser.innerText = "";
     logoutBtn.classList.add("hidden");
@@ -62,6 +66,8 @@ function showHome() {
     const box = document.getElementById("userDataBox");
     box.innerHTML = "";
     box.classList.add("hidden");
+    loginHomeBtn.classList.remove("hidden");
+    registerHomeBtn.classList.remove("hidden");
   }
 }
 
@@ -243,6 +249,10 @@ document.getElementById("showDataBtn").addEventListener("click", () => {
   if (!loggedUser) return;
 
   const box = document.getElementById("userDataBox");
+  if (!box.classList.contains("hidden")) {
+    box.classList.add("hidden");
+    return;
+  }
 
   box.innerHTML = `
   <div><b>Name:</b> ${loggedUser.name}</div>
@@ -251,7 +261,8 @@ document.getElementById("showDataBtn").addEventListener("click", () => {
 `;
 
   box.classList.remove("hidden");
-  box.className = "message success";
+  box.classList.remove("error");
+  box.classList.add("message", "success");
 });
 
 // ===== LOGOUT (remove sessão e volta pra home) =====
